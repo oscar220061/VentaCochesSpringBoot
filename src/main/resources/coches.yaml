@@ -1,0 +1,387 @@
+openapi: 3.0.1
+info:
+  title: API para Coches
+  description: Documentación de la API de Coches
+  version: "1.0"
+servers:
+  - url: //localhost:8080/
+
+
+
+tags:
+  - name: rest-endpoint-controller
+    description: Rest Endpoint Controller
+paths:
+  /coches/add:
+    post:
+      tags:
+        - rest-endpoint-controller
+      summary: crearCoche
+      operationId: crearCocheUsingPOST
+      requestBody:
+        description: nuevoCoche
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: nuevoCoche
+  /coches/color/{color}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochesPorColor
+      operationId: getCochesPorColorUsingGET
+      parameters:
+        - name: color
+          in: path
+          description: color
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+  /coches/delete/{matricula}:
+    delete:
+      tags:
+        - rest-endpoint-controller
+      summary: deleteCoche
+      operationId: deleteCocheUsingDELETE
+      parameters:
+        - name: matricula
+          in: path
+          description: matricula
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "204":
+          description: No Content
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+  /coches/marca/{marca}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochesPorMarca
+      operationId: getCochesPorMarcaUsingGET
+      parameters:
+        - name: marca
+          in: path
+          description: marca
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+  /coches/matricula/{matricula}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochePorMatricula
+      operationId: getCochePorMatriculaUsingGET
+      parameters:
+        - name: matricula
+          in: path
+          description: matricula
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+  /coches/modelo/{modelo}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochesPorModelo
+      operationId: getCochesPorModeloUsingGET
+      parameters:
+        - name: modelo
+          in: path
+          description: modelo
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+  /coches/precio/{precio}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochesPorPrecio
+      operationId: getCochesPorPrecioUsingGET
+      parameters:
+        - name: precio
+          in: path
+          description: precio
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+  /coches/update:
+    post:
+      tags:
+        - rest-endpoint-controller
+      summary: updtaeCoche
+      operationId: updtaeCocheUsingPOST
+      requestBody:
+        description: coche
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coche'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: coche
+  /coches/update/color/{matricula}:
+    patch:
+      tags:
+        - rest-endpoint-controller
+      summary: updateColorCoche
+      operationId: updateColorCocheUsingPATCH
+      parameters:
+        - name: matricula
+          in: path
+          description: matricula
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: requestBody
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "204":
+          description: No Content
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+      x-codegen-request-body-name: requestBody
+  /coches/update/precio/{matricula}:
+    patch:
+      tags:
+        - rest-endpoint-controller
+      summary: updatePrecioCoche
+      operationId: updatePrecioCocheUsingPATCH
+      parameters:
+        - name: matricula
+          in: path
+          description: matricula
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: requestBody
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "204":
+          description: No Content
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+      x-codegen-request-body-name: requestBody
+  /coches/year/{year}:
+    get:
+      tags:
+        - rest-endpoint-controller
+      summary: getCochesPorAnio
+      operationId: getCochesPorAnioUsingGET
+      parameters:
+        - name: year
+          in: path
+          description: year
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+components:
+  schemas:
+    Coche:
+      title: Coche
+      type: object
+      properties:
+        anioFabricacion:
+          type: integer
+          format: int32
+        color:
+          type: string
+        marca:
+          type: string
+        matricula:
+          type: string
+        modelo:
+          type: string
+        precio:
+          type: number
+          format: double
+
+x-original-swagger-version: "2.0"
